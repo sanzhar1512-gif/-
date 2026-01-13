@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Центр Медиации | Мирное решение споров</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Общие стили */
+        :root {
+            --primary-color: #2c3e50; /* Темно-синий */
+            --accent-color: #27ae60;  /* Изумрудно-зеленый */
+            --light-bg: #f8f8f8;
+            --text-color: #333;
+            --white-color: #fff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            background: var(--light-bg);
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Навигация */
+        nav {
+            background: var(--primary-color);
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav a {
+            color: var(--white-color);
+            margin: 0 18px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.05rem;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: var(--accent-color);
+            text-shadow: 0 0 5px rgba(255,255,255,0.5);
+        }
+
+        /* Hero Секция */
+        .hero {
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white-color);
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1080&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            margin-top: -15px; /* компенсируем padding nav */
+        }
+        .hero-content {
+            z-index: 2;
+            max-width: 900px;
+            padding: 20px;
+        }
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        .hero .btn {
+            background: var(--accent-color);
+            color: var(--white-color);
+            padding: 18px 40px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: background 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            text-decoration: none;
+            display: inline-block;
+        }
+        .hero .btn:hover {
+            background: #219150;
+            transform: translateY(-5px);
+        }
+
+        /* Секции общие */
+        .section {
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+        }
+        .section-title {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 60px;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Секция "О нас" */
+        .about-us .container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            text-align: left;
+            flex-wrap: wrap; /* Для адаптивности */
+        }
+        .about-us img {
+            width: 50%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.5s ease;
+            min-width: 300px; /* Чтобы не сжималось слишком сильно */
+        }
+        .about-us img:hover {
+            transform: scale(1.03);
+        }
+        .about-us .text-content {
+            flex: 1;
+            padding-right: 20px;
+        }
+        .about-us h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        .about-us p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 15px;
+        }
+        .about-us ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        .about-us ul li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            color: #444;
+        }
+        .about-us ul li i {
+            color: var(--accent-color);
+            margin-right: 10px;
+        }
+
+        /* Секция "Как это работает" */
+        .how-it-works {
+            background: var(--primary-color);
+            color: var(--white-color);
+        }
+        .how-it-works .section-title {
+            color: var(--white-color);
+        }
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        .step-card {
+            background: var(--white-color);
+            color: var(--text-color);
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .step-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        .step-card i {
+            font-size: 3.5rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+        .step-card h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        .step-card p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* Секция "Почему мы?" */
+        .why-us {
+            background: var(--light-bg);
+        }
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        .advantage-card {
+            background: var(--white-color);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            text-align: left;
+            border-left: 6px solid var(--accent-color);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .advantage-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .advantage-card i {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            display: block;
+        }
+        .advantage-card h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        .advantage-card p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+        .advantage-card .image-wrapper {
+            float: right; /* Размещаем изображение справа */
+            margin-left: 20px;
+            margin-bottom: 10px;
+            max-width: 150px; /* Уменьшаем размер изображения */
+            height: auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .advantage-card .image-wrapper img {
+            width: 100%;
+            display: block;
+        }
+
+        /* CTA Секция */
+        .cta-section {
+            background: var(--accent-color);
+            color: var(--white-color);
+            padding: 80px 0;
+        }
+        .cta-section .section-title {
+            color: var(--white-color);
+            margin-bottom: 30px;
+        }
+        .cta-section p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+        .cta-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--white-color);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: left;
+        }
+        .cta-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        .cta-form input,
+        .cta-form textarea {
+            width: calc(100% - 24px); /* Учитываем padding */
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        .cta-form input:focus,
+        .cta-form textarea:focus {
+            border-color: var(--accent-color);
+            outline: none;
+        }
+        .cta-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .cta-form .btn {
+            width: 100%;
+            background: var(--primary-color);
+            color: var(--white-color);
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .cta-form .btn:hover {
+            background: #23313d;
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: var(--white-color);
+            padding: 50px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        footer .footer-links a {
+            color: var(--white-color);
+            margin: 0 10px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        footer .footer-links a:hover {
+            color: var(--accent-color);
+        }
+        footer p {
+            margin-top: 20px;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.1rem; }
+            .section-title { font-size: 2.2rem; }
+            .about-us .container { flex-direction: column; text-align: center; }
+            .about-us img { width: 100%; }
+            .about-us .text-content { padding-right: 0; }
+            .steps-grid, .why-us-grid { grid-template-columns: 1fr; }
+            .advantage-card .image-wrapper { float: none; margin: 0 auto 20px; }
+            nav a { margin: 0 10px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#home">Главная</a>
+        <a href="#about">О медиации</a>
+        <a href="#how-it-works">Услуги</a>
+        <a href="#advantages">Преимущества</a>
+        <a href="#contact">Контакты</a>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Мирное урегулирование любых споров</h1>
+            <p>Профессиональная медиация: быстро, конфиденциально, эффективно.</p>
+            <a href="#contact" class="btn">Получить бесплатную консультацию</a>
+        </div>
+    </section>
+
+    <section class="section about-us" id="about">
+        <div class="container">
+            <img src="https://lh3.googleusercontent.com/rd-gg-dl/ABS2GSmmQeLBtTg7pT2U3RM-r2r8rlwubrHIEFEs9gItSxI-9QY8YRmOLH2288IUi8aezPAqJ5G8eNmD2lJvIBD-0AsxKTVIYPb3xgSGb05ztDgskNsCCMLolXBSMxUiLjkrKYgFB1aH0EP3UGFsuLW44AAQhRXiJIqyDIfwowvGMoVaX4PTOrUPHZWlLeFkI18cOizGrEApKAuetfYfkHaMG6kMk0q0c0j19DFNMYwiyIxFWcPeaPB8c4TfeNN4f2ISK-pYkyNtV17h5fJK8Kp0IuoHZVyspIcQFkrQJ29bFjY8MnBJo8PSfP4IN-y-e8qyotXJbnct0MyfdDq4FzycDmhwkDh3fQNGo3nJkzVZPsBZvaiqosLRAHJ_J2okWm289HKFvjazxjA-uMPhmV51tAFEAwouLlf8G3DBu3QEu6Qa_6rLcX5nFJWpRuyixFBK9lPlPl-X3k66GTAMUtH3dO_GIJvFAb67XfjT8YSyS1N310RQXptln6vNhfAPC9_Z6UZiguJe-gPRdOwO6TdD11RpXoRVp4EsviLaf78twgvbR1VWgxFuemz4me9CCuoA3nck0u0RlSBnYSSNsd4DxSdq7GmSt2DjvilyAwf5KLQoPLHwzwbhjqIjsncl1sConAMbCvXmz84B8CTrFNbVivp9pyvn4b7y6LhxUeUGVLFRS_nX5CcLK7Yk4INhUzd20D2ezHCTqRwi4pXZJwH4JFqrNeAmdBOIzceOzKFalotV2JGPsfnD1XTEVCu3sopXAwimQQvCR_MbeiFe0h8wQhsB_ejRbrV799Z3pCB6A-bqQLPCeZtyIT9jW8wmj1uZUwYUiJ_O8YZFvdvixL-3ssJnQIdZhy_C1dOBNO9GZsF7pGpXiJT5ELlXJwBKmXWazf_5NqBq5zv22UoN7JJiWzmIiEj8KKNakiFQr1ZUcUJ-56A1izfo5Xzfl7iDLYmHthVHyiuhhXHzRME76CAjrRS6_F7qYUZZJaYeJeSTZ3VONk_tsS6Vi-KyBzJowrRog8daxfz0kuZq3L9LjnLkoNIVK2k1zHaCzYaRNOGp1mu4T19sNIK4GnAEwxNm1GRkVYLGvcYtrUUE15RqSLVs9Uw1ORNwnLcB4OCN78pgn_aF-rWjbtjqzZjDh7JlslNyyEqA0v1dzuRMIuVIQd9961PUitsHEy-SZsY29PD82BziSdM=s1024-rj" alt="About Mediation" class="about-image">
+            <div class="text-content">
+                <h2 class="section-title" style="text-align: left;">О Центре Медиации</h2>
+                <p>Мы — команда опытных медиаторов, специализирующихся на мирном разрешении конфликтов. Наша миссия — предоставить эффективную альтернативу судебным разбирательствам, помогая сторонам найти взаимовыгодные решения.</p>
+                <p>Наша цель - не просто решить спор, а восстановить диалог и сохранить важные отношения. Мы работаем с семейными, корпоративными, трудовыми и гражданскими спорами, предлагая индивидуальный подход к каждой ситуации.</p>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Опытные и сертифицированные медиаторы</li>
+                    <li><i class="fas fa-check-circle"></i> Строгая конфиденциальность и этика</li>
+                    <li><i class="fas fa-check-circle"></i> Высокий процент успешных разрешений</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section how-it-works" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Как это работает? Простой путь к согласию</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <i class="fas fa-user-friends"></i>
+                    <h3>1. Заявка и предварительная встреча</h3>
+                    <p>Вы связываетесь с нами, и мы назначаем первую, ознакомительную встречу (онлайн или очно), чтобы понять суть конфликта и определить возможность медиации.</p>
+                </div>
+                <div class="step-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>2. Медиационные сессии</h3>
+                    <p>Под руководством нейтрального медиатора стороны обсуждают свои позиции, интересы и возможные варианты решения. Медиатор помогает снять эмоциональное напряжение.</p>
+                </div>
+                <div class="step-card">
+                    <i class="fas fa-file-contract"></i>
+                    <h3>3. Разработка соглашения</h3>
+                    <p>Когда решение найдено, медиатор помогает юридически грамотно оформить его в виде медиативного соглашения, которое может быть заверено нотариусом.</p>
+                </div>
+                <div class="step-card">
+                    <i class="fas fa-check-double"></i>
+                    <h3>4. Успешное завершение</h3>
+                    <p>Соглашение подписывается сторонами, и конфликт считается урегулированным. Вы экономите время, деньги и сохраняете отношения.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section why-us" id="advantages">
+        <div class="container">
+            <h2 class="section-title">Наши ключевые преимущества</h2>
+            <div class="why-us-grid">
+                <div class="advantage-card">
+                    <div class="image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1501139083538-0139583c060f?q=80&w=400&auto=format&fit=crop" alt="Time Saving">
+                    </div>
+                    <i class="fas fa-hourglass-half"></i>
+                    <h3>Экономия времени</h3>
+                    <p>Медиация позволяет решить спор в разы быстрее, чем длительные судебные разбирательства. Ваши дела не будут годами пылиться в архивах.</p>
+                </div>
+                <div class="advantage-card">
+                     <div class="image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?q=80&w=400&auto=format&fit=crop" alt="Cost Saving">
+                    </div>
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h3>Снижение расходов</h3>
+                    <p>Вы избегаете высоких судебных пошлин, расходов на юристов и непредвиденных затрат. Медиация — это прозрачный и предсказуемый бюджет.</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="image-wrapper">
+                        <img src="data:image/jpeg;base64,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" alt="Confidentiality">
+                    </div>
+                    <i class="fas fa-user-secret"></i>
+                    <h3>Полная конфиденциальность</h3>
+                    <p>Вся информация, обсуждаемая в ходе медиации, остается строго между сторонами и медиатором, в отличие от публичного судебного процесса.</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=400&auto=format&fit=crop" alt="Relationship Preservation">
+                    </div>
+                    <i class="fas fa-handshake-alt-slash"></i>
+                    <h3>Сохранение отношений</h3>
+                    <p>Вместо разрушительной конфронтации, медиация учит искать компромиссы, что особенно важно в семейных или деловых спорах.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section cta-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Начните свой путь к примирению сегодня</h2>
+            <p>Не откладывайте решение конфликта. Свяжитесь с нами для бесплатной предварительной консультации.</p>
+            <div class="cta-form">
+                <form>
+                    <label>Ваше имя</label>
+                    <input type="text" placeholder="Иван Иванов">
+                    <label>Телефон</label>
+                    <input type="tel" placeholder="+7 (___) ___-__-__">
+                    <label>Сообщение</label>
+                    <textarea placeholder="Опишите кратко вашу ситуацию"></textarea>
+                    <button type="submit" class="btn">Отправить заявку</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#home">Главная</a>
+                <a href="#about">О медиации</a>
+                <a href="#how-it-works">Услуги</a>
+                <a href="#contact">Контакты</a>
+            </div>
+            <p>&copy; 2026 Центр Медиации. Все права защищены.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

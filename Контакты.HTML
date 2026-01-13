@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Контакты | Напишите нам</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #2c3e50; color: #333; }
+        nav { background: #34495e; padding: 20px; text-align: center; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
+        nav a:hover { color: #27ae60; }
+
+        .contact-page { display: flex; justify-content: center; align-items: center; min-height: 80vh; padding: 20px; }
+        .contact-card { background: white; display: flex; max-width: 900px; width: 100%; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.3); }
+        
+        .info-side { background: #27ae60; color: white; padding: 40px; flex: 1; }
+        .form-side { padding: 40px; flex: 1.5; }
+
+        input, textarea { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+        button { background: #27ae60; color: white; border: none; padding: 15px; width: 100%; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        button:hover { background: #219150; }
+        
+        .contact-item { margin-bottom: 20px; }
+        .contact-item strong { display: block; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="file:///C:/Users/%D0%9F%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B0%D0%BF%D1%82%D0%B5%D0%BB%D1%8C/Desktop/%D0%BC%D0%B5%D0%B4%D0%B8%D0%B0%D1%86%D0%B8%D1%8F/%D0%93%D0%BB%D0%B0%D0%B2%D0%BD%D1%8B%D0%B9%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD.HTML">Главная</a>
+        <a href="file:///C:/Users/%D0%9F%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B0%D0%BF%D1%82%D0%B5%D0%BB%D1%8C/Desktop/%D0%BC%D0%B5%D0%B4%D0%B8%D0%B0%D1%86%D0%B8%D1%8F/%D0%9E%20%D0%BC%D0%B5%D0%B4%D0%B8%D0%B0%D1%86%D0%B8%D1%8F.HTML">О медиации</a>
+        <a href="file:///C:/Users/%D0%9F%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B0%D0%BF%D1%82%D0%B5%D0%BB%D1%8C/Desktop/%D0%BC%D0%B5%D0%B4%D0%B8%D0%B0%D1%86%D0%B8%D1%8F/%D0%A3%D1%81%D0%BB%D1%83%D0%B3%D0%B8.HTML">Услуги</a>
+        <a href="file:///C:/Users/%D0%9F%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B0%D0%BF%D1%82%D0%B5%D0%BB%D1%8C/Desktop/%D0%BC%D0%B5%D0%B4%D0%B8%D0%B0%D1%86%D0%B8%D1%8F/%D0%9F%D1%80%D0%B5%D0%B8%D0%BC%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D0%B0.HTML">Преимущества</a>
+        <a href="file:///C:/Users/%D0%9F%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B0%D0%BF%D1%82%D0%B5%D0%BB%D1%8C/Desktop/%D0%BC%D0%B5%D0%B4%D0%B8%D0%B0%D1%86%D0%B8%D1%8F/%D0%9 density%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D1%8B.HTML">Контакты</a>
+    </nav>
+
+    <div class="contact-page">
+        <div class="contact-card">
+            <div class="info-side">
+                <h2>Наши контакты</h2>
+                <div class="contact-item">
+                    <strong>Адрес:</strong>
+                    г. Москва, Проспект Мира, 101
+                </div>
+                <div class="contact-item">
+                    <strong>Телефон:</strong>
+                    +7 (999) 000-00-00
+                </div>
+                <div class="contact-item">
+                    <strong>Email:</strong>
+                    help@mediation.pro
+                </div>
+                <div class="contact-item">
+                    <strong>Режим работы:</strong>
+                    Пн-Пт: 09:00 - 20:00<br>
+                    Сб-Вс: По записи
+                </div>
+            </div>
+            <div class="form-side">
+                <h3>Записаться на встречу</h3>
+                <form>
+                    <input type="text" placeholder="Ваше полное имя" required>
+                    <input type="tel" placeholder="+7 (___) ___-__-__" required>
+                    <textarea rows="4" placeholder="Опишите кратко суть вашего спора"></textarea>
+                    <button type="button" onclick="alert('Спасибо! Мы свяжемся с вами в течение 30 минут.')">ОТПРАВИТЬ ЗАПРОС</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
